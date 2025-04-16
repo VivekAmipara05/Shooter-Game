@@ -10,32 +10,36 @@
 <br>
 
 <h2> 📝Description</h2>
+
 Space Shooter is a console-based game where you control a spaceship to shoot at enemies, avoid collisions, and rack up a high score. The game features a simple yet engaging experience where you move left and right to avoid and shoot down enemies.
 
-Features
+<h2> ✨ Features </h2>
 
-🚀 Move the spaceship left and right using the A and D keys.
-🔫 Shoot bullets with the spacebar.
-👾 Avoid enemies that move towards the spaceship.
-💥 Destroy enemies with bullet collisions.
-💀 Game Over screen when a collision happens.
-🏆 Score tracker to keep track of your score as you destroy enemies.
-Controls
+<br>🚀 Move the spaceship left and right using the A and D keys.
+<br>🔫 Shoot bullets with the spacebar.
+<br>👾 Avoid enemies that move towards the spaceship.
+<br>💥 Destroy enemies with bullet collisions.
+<br>💀 Game Over screen when a collision happens.
+<br>🏆 Score tracker to keep track of your score as you destroy enemies.
+<br>
+   <h2> 🎮 Controls</h2>
 
-A: Move left.
-D: Move right.
-Space: Shoot bullets.
-ESC: Quit the game.
-1: Start the game.
-2: View instructions.
-3: Quit from the main menu.
-How to Play
+<br>A: Move left.
+<br>D: Move right.
+<br>Space: Shoot bullets.
+<br>ESC: Quit the game.
+<br>1: Start the game.
+<br>2: View instructions.
+<br>3: Quit from the main menu.
 
-Start the game by selecting the Start Game 🎮 option from the main menu.
-Use A and D to move your spaceship left and right.
-Shoot bullets using the Space key to destroy incoming enemies.
-Avoid enemy ships. If an enemy touches your spaceship, the game ends.
-Your score is updated each time you destroy an enemy.
+<h2>  ▶️ How to Play</h2>
+
+<br>Start the game by selecting the Start Game 🎮 option from the main menu.
+<br>Use A and D to move your spaceship left and right.
+<br>Shoot bullets using the Space key to destroy incoming enemies.
+<br>Avoid enemy ships. If an enemy touches your spaceship, the game ends.
+<br>Your score is updated each time you destroy an enemy.
+
 Instructions
 
 A: Move Left.
