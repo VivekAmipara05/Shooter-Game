@@ -49,7 +49,7 @@ void drawBorder() {
 
 void drawBird() {
     SetConsoleTextAttribute(console, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-    gotoxy(birdPos, 22);     cout << "  ✈️  ";
+    gotoxy(birdPos, 22);     cout << "  ✈  ";
     gotoxy(birdPos, 23);     cout << "  🦾  ";
     gotoxy(birdPos, 24);     cout << " 💨💨💨 ";
 }
@@ -106,10 +106,10 @@ void moveBullet() {
 void drawBullets() {
     for (int i = 0; i < 20; i++) {
         if (bullets[i][0] > 1 && bullets[i][0] < SCREEN_HEIGHT) {
-            gotoxy((int)bullets[i][1], (int)bullets[i][0]); cout << "⚡️";
+            gotoxy((int)bullets[i][1], (int)bullets[i][0]); cout << "⚡";
         }
         if (bullets[i][2] > 1 && bullets[i][2] < SCREEN_HEIGHT) {
-            gotoxy((int)bullets[i][3], (int)bullets[i][2]); cout << "⚡️";
+            gotoxy((int)bullets[i][3], (int)bullets[i][2]); cout << "⚡";
         }
     }
 }
@@ -242,7 +242,7 @@ void play() {
     genEnemy(0); genEnemy(1);
     updateScore();
 
-    gotoxy(WIN_WIDTH + 5, 2); cout << "✈️ Space Shooter ✈️";
+    gotoxy(WIN_WIDTH + 5, 2); cout << "✈ Space Shooter ✈";
     gotoxy(10, 5); cout << "Press any key to start! 🚀";
     getch();
     gotoxy(10, 5); cout << "                        ";
@@ -310,7 +310,7 @@ int main() {
     while (true) {
         system("cls");
         gotoxy(10, 5); cout << " ============================ ";
-        gotoxy(10, 6); cout << " |      ✈️ Space Shooter     | ";
+        gotoxy(10, 6); cout << " |      ✈ Space Shooter     | ";
         gotoxy(10, 7); cout << " ============================ ";
         gotoxy(10, 9); cout << "1. Start Game 🎮";
         gotoxy(10, 10); cout << "2. Quit ❌";
