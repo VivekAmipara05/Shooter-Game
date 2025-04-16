@@ -24,47 +24,65 @@ Space Shooter is a console-based game where you control a spaceship to shoot at 
 <br>
    <h2> 🎮 Controls</h2>
 
-<br>A: Move left.
-<br>D: Move right.
-<br>Space: Shoot bullets.
-<br>ESC: Quit the game.
-<br>1: Start the game.
-<br>2: View instructions.
-<br>3: Quit from the main menu.
+<br>➡️A: Move left.
+<br>➡️D: Move right.
+<br>➡️Space: Shoot bullets.
+<br>➡️ESC: Quit the game.
+<br>➡️1: Start the game.
+<br>➡️2: View instructions.
+<br>➡️3: Quit from the main menu.
 
 <h2>  ▶️ How to Play</h2>
 
-<br>Start the game by selecting the Start Game 🎮 option from the main menu.
-<br>Use A and D to move your spaceship left and right.
-<br>Shoot bullets using the Space key to destroy incoming enemies.
-<br>Avoid enemy ships. If an enemy touches your spaceship, the game ends.
-<br>Your score is updated each time you destroy an enemy.
+<br>➡️ Start the game by selecting the Start Game 🎮 option from the main menu.
+<br>➡️Use A and D to move your spaceship left and right.
+<br>➡️Shoot bullets using the Space key to destroy incoming enemies.
+<br>➡️Avoid enemy ships. If an enemy touches your spaceship, the game ends.
+<br>➡️Your score is updated each time you destroy an enemy.
 
-Instructions
+<h2> 🧑‍🏫 Instructions
+</h2>
+<br>➡️A: Move Left.
+<br>➡️D: Move Right.
+<br>➡️Space: Shoot 🔫.
+<br>➡️Avoid enemies (👾) and stay alive as long as possible!
 
-A: Move Left.
-D: Move Right.
-Space: Shoot 🔫.
-Avoid enemies (👾) and stay alive as long as possible!
-Game Over
+<h2> ♠️ Game Over</h2>
 
-The game ends when your spaceship collides with an enemy. You will see a Game Over screen displaying your final score. Press any key to return to the main menu.
+<br>The game ends when your spaceship collides with an enemy.<br> You will see a Game Over screen displaying your final score. <br>Press any key to return to the main menu.
 
-Installation
+<h2> ℹ️ Installation </h2>
 
-Make sure you have a C++ compiler (e.g., GCC or Visual Studio).
-Clone or download this repository.
-Compile the C++ code using a C++ compiler.
-Run the compiled executable.
-g++ space_shooter.cpp -o space_shooter
-./space_shooter
-Dependencies
+<br>➡️Make sure you have a C++ compiler (e.g., GCC or Visual Studio).
+<br>➡️Clone or download this repository.
 
-Windows: This game uses Windows-specific libraries, such as <conio.h> and <windows.h>, which are available on Windows systems.
-Notes
+<h2>⭕️Compilation and Execution</h2>
 
-Make sure your console window is large enough to fit the game (recommendation: at least 90x26 characters).
-Emoji characters are supported in the console if your system supports UTF-8 encoding.
+1. Clone the repository:
+   ```bash
+   https://github.com/VivekAmipara05/Shooter-Game
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd Shooter-game
+   ```
+3. Compile using g++:
+   ```bash
+   g++ Shooter.cpp -o code.exe
+   ```
+4. Run the game:
+   ```bash
+   ./code.exe
+   ```
+
+<h2> 🌼Dependencies</h2>
+
+<br>➡️ Windows: This game uses Windows-specific libraries, such as <conio.h> and <windows.h>, which are available on Windows systems.
+
+<h2> 📒 Notes</h2>
+
+<br>➡️Make sure your console window is large enough to fit the game (recommendation: at least 90x26 characters).
+<br>➡️Emoji characters are supported in the console if your system supports UTF-8 encoding.
 
 
 <h2>⭕️Github</h2>
