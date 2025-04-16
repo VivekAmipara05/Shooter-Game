@@ -1,11 +1,11 @@
-<h1>🎮 Shooter-Game</h1>
+<h1>  
+🚀 Space Shooter Game
+ </h1>
 
 
 <h2>🤝Made by Digital Dreamers</h2>
 
-🚀 Space Shooter Game
-
-Description
+<h2> 📝Description</h2>
 
 Space Shooter is a console-based game where you control a spaceship to shoot at enemies, avoid collisions, and rack up a high score. The game features a simple yet engaging experience where you move left and right to avoid and shoot down enemies.
 
