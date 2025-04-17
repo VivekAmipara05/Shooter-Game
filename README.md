@@ -47,68 +47,68 @@ Space Shooter is a console-based game where you control a spaceship to shoot at 
 <h2>Function overview</h2>
 
 <h3>📌 Console Handling Functions</h3>
-<br>gotoxy(int x, int y)
+<br> ✨gotoxy(int x, int y)
 <br>Moves the console cursor to the specified (x, y) position for drawing.
-<br>setcursor(bool visible, DWORD size)
+<br>✨setcursor(bool visible, DWORD size)
 <br>Sets the visibility and size of the console cursor.
 
 <h3>🎮 Game UI and Player Functions</h3>
-<br>drawBorder()
+<br>✨drawBorder()
 <br>Draws the game boundary using special characters (±). Also marks the score and life area.
-<br>drawBird()
+<br>✨drawBird()
 <br>Displays the player character (the airplane) using emojis at its current horizontal position.
-<br>eraseBird()
+<br>✨eraseBird()
 <br>Erases the player airplane from the screen before redrawing it in a new position.
 
 <h3>👾 Enemy Functions</h3>
-<br>genEnemy(int ind)
+<br>✨genEnemy(int ind)
 <br>Generates a new horizontal position for an enemy. ind is the enemy index (0 or 1).
-<br>drawEnemy(int ind)
-<br>Draws an enemy (👽) at its (x, y) position.
-<br>eraseEnemy(int ind)
+<br>✨drawEnemy(int ind)
+<br>✨Draws an enemy (👽) at its (x, y) position.
+<br>✨eraseEnemy(int ind)
 <br>Erases the enemy graphics from the screen.
-<br>resetEnemy(int ind)
+<br>✨resetEnemy(int ind)
 <br>Resets an enemy to the top of the screen with a new horizontal position.
 
 <h3>🔫 Player Bullet Functions</h3>
-<br>genBullet()
+<br>✨genBullet()
 <br>Generates a pair of bullets (left and right) from the airplane's wings.
-<br>moveBullet()
+<br>✨moveBullet()
 <br>Moves the bullets upward (toward the enemies). If they reach the top, they're deactivated.
-<br>drawBullets()
+<br>✨drawBullets()
 <br>Displays all active bullets on the screen as ⚡.
-<br>eraseBullets()
+<br>✨eraseBullets()
 <br>Erases all bullets from their current positions before moving them.
-<br>eraseBullet(int i)
+<br>✨eraseBullet(int i)
 <br>Erases a specific bullet by index i.
 
 <h3>💣 Enemy Bullet Functions</h3>
-<br>genEnemyBullet(int ex, int ey)
+<br>✨genEnemyBullet(int ex, int ey)
 <br>Generates a bullet below the enemy's position.
-<br>moveEnemyBullets()
+<br>✨moveEnemyBullets()
 <br>Moves enemy bullets downward. If they reach the bottom, they're deactivated.
-<br>drawEnemyBullets()
+<br>✨drawEnemyBullets()
 <br>Displays active enemy bullets as 💣.
-<br>eraseEnemyBullets()
+<br>✨eraseEnemyBullets()
 <br>Erases all enemy bullets from their current positions.
 
 <h3>⚠️ Collision Detection Functions</h3>
-<br>checkEnemyBulletHit()
+<br>✨checkEnemyBulletHit()
 <br>Checks if an enemy bullet has hit the player. Returns true if it does.
-<br>checkCollisionForEnemy(int i)
+<br>✨checkCollisionForEnemy(int i)
 <br>Checks if a specific enemy i has collided with the player.
-<br>collision()
+<br>✨collision()
 <br>Checks if any active enemy has collided with the player. Returns true on collision.
-<br>bulletHit()
+<br>✨bulletHit()
 <br>Checks if a bullet has hit an enemy. If hit:
 <br>Removes the bullet.
 <br>Resets the enemy.
 <br>Returns 1 (hit detected). Else, returns 0.
 
 <h3>☠️ Game Over & Score Display</h3>
-<br>gameover()
+<br>✨gameover()
 <br>Displays a Game Over screen with final score and thanks message.
-<br>updateScore()
+<br>✨updateScore()
 <br>Updates and redraws the score and remaining lives on the side panel.
 
 <h2> ♠️ Game Over</h2>
@@ -136,8 +136,6 @@ Space Shooter is a console-based game where you control a spaceship to shoot at 
    ```bash
    ./code.exe
    ```
-
-![Image](https://github.com/user-attachments/assets/44cfeef0-3ecb-419d-9d21-aa6b91202ff9)
 
 <h2> 🌼Dependencies</h2>
 
