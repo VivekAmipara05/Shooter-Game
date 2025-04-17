@@ -17,6 +17,7 @@ int bullets[20][4];
 int bIndex = 0;
 int birdPos = WIN_WIDTH / 2;
 int score = 0;
+int lastScore = 0; // ➕ Added to store last game score
 
 void gotoxy(int x, int y) {
     CursorPosition.X = x;
@@ -78,7 +79,7 @@ void eraseEnemy(int ind) {
 
 void resetEnemy(int ind) {
     eraseEnemy(ind);
-    enemyY[ind] = 4;
+    enemyY[ind] = 1;
     genEnemy(ind);
 }
 
@@ -163,6 +164,7 @@ void gameover() {
     system("cls");
     cout << "\n\t\t💀💀💀 GAME OVER 💀💀💀\n\n";
     cout << "\t\tFinal Score: " << score << "\n";
+    lastScore = score; // ➕ Store final score
     cout << "\n\t\tPress any key to return to menu...";
     getch();
 }
@@ -198,13 +200,13 @@ void play() {
     genEnemy(0); genEnemy(1);
     updateScore();
 
-    gotoxy(WIN_WIDTH + 5, 2); cout << "🚀 Space Shooter 🚀";
-    gotoxy(WIN_WIDTH + 6, 4); cout << "----------";
+    gotoxy(WIN_WIDTH + 2, 2); cout << "🚀Space Shooter🚀";
+    gotoxy(WIN_WIDTH + 6, 4); cout << "--------";
     gotoxy(WIN_WIDTH + 7, 12); cout << "Controls";
     gotoxy(WIN_WIDTH + 7, 13); cout << "--------";
-    gotoxy(WIN_WIDTH + 2, 14); cout << "A - Left";
-    gotoxy(WIN_WIDTH + 2, 15); cout << "D - Right";
-    gotoxy(WIN_WIDTH + 2, 16); cout << "Space - Shoot";
+    gotoxy(WIN_WIDTH + 5, 14); cout << "A - Left" << endl;
+    gotoxy(WIN_WIDTH + 5, 15); cout << "D - Right" << endl;
+    gotoxy(WIN_WIDTH + 5, 16); cout << "Space - Shoot" << endl;
     gotoxy(10, 5); cout << "Press any key to start 🚀";
     getch();
     gotoxy(10, 5); cout << "                      ";
@@ -219,7 +221,7 @@ void play() {
                 if (birdPos < WIN_WIDTH - 7) birdPos += 2;
             }
             if (ch == 32) genBullet();
-            if (ch == 27) break; // ESC to quit
+            if (ch == 27) break;
         }
 
         drawBird();
@@ -260,13 +262,15 @@ int main() {
 
     while (true) {
         system("cls");
+        gotoxy(10, 4); cout << "👾 Welcome back, pilot!";
         gotoxy(10, 5); cout << " ============================ ";
-        gotoxy(10, 6); cout << " |     🚀 Space Shooter     | ";
+        gotoxy(10, 6); cout << " |     🚀 Space Shooter 🚀    | ";
         gotoxy(10, 7); cout << " ============================ ";
         gotoxy(10, 9); cout << "1. Start Game 🎮";
         gotoxy(10, 10); cout << "2. Instructions 📜";
         gotoxy(10, 11); cout << "3. Quit ❌";
-        gotoxy(10, 13); cout << "Select option: ";
+        gotoxy(10, 13); cout << "Last Score: " << lastScore;
+        gotoxy(10, 15); cout << "Select option: ";
         char op = getche();
 
         if (op == '1') play();
