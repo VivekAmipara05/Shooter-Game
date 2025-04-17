@@ -67,7 +67,7 @@ void genEnemy(int ind) {
 void drawEnemy(int ind) {
     if (enemyFlag[ind]) {
         SetConsoleTextAttribute(console, FOREGROUND_RED | FOREGROUND_INTENSITY);
-        gotoxy(enemyX[ind], enemyY[ind]);     cout << " 🐉 ";
+        gotoxy(enemyX[ind], enemyY[ind]);     cout << " 👽 ";
         gotoxy(enemyX[ind], enemyY[ind] + 1); cout << "👽👽";
     }
 }
@@ -273,6 +273,7 @@ void play() {
 
         if (collision() || checkEnemyBulletHit()) {
             life--;
+            Beep(1000,200);
             updateScore();
             if (life == 0) {
                 gameover();
@@ -282,7 +283,8 @@ void play() {
 
         if (bulletHit()) {
             score++;
-           // Beep(1000, 800);
+           
+            Beep(1000,50);
             updateScore();
         }
 
