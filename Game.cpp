@@ -17,7 +17,8 @@ int bullets[20][4];
 int bIndex = 0;
 int birdPos = WIN_WIDTH / 2;
 int score = 0;
-int lastScore = 0; // ➕ Added to store last game score
+int lastScore = 0;
+int highScore = 0; // ✅ Added high score variable
 
 void gotoxy(int x, int y) {
     CursorPosition.X = x;
@@ -164,8 +165,16 @@ void gameover() {
     system("cls");
     cout << "\n\t\t💀💀💀 GAME OVER 💀💀💀\n\n";
     cout << "\t\tFinal Score: " << score << "\n";
-    lastScore = score; // ➕ Store final score
+
+    lastScore = score;
+    if (score > highScore) {
+        highScore = score;
+        cout << "\t\t🏆 New High Score! 🏆\n";
+    }
+	Sleep(3000);
+
     cout << "\n\t\tPress any key to return to menu...";
+	
     getch();
 }
 
@@ -204,9 +213,9 @@ void play() {
     gotoxy(WIN_WIDTH + 6, 4); cout << "--------";
     gotoxy(WIN_WIDTH + 7, 12); cout << "Controls";
     gotoxy(WIN_WIDTH + 7, 13); cout << "--------";
-    gotoxy(WIN_WIDTH + 5, 14); cout << "A - Left" << endl;
-    gotoxy(WIN_WIDTH + 5, 15); cout << "D - Right" << endl;
-    gotoxy(WIN_WIDTH + 5, 16); cout << "Space - Shoot" << endl;
+    gotoxy(WIN_WIDTH + 5, 14); cout << "A - Left";
+    gotoxy(WIN_WIDTH + 5, 15); cout << "D - Right";
+    gotoxy(WIN_WIDTH + 5, 16); cout << "Space - Shoot";
     gotoxy(10, 5); cout << "Press any key to start 🚀";
     getch();
     gotoxy(10, 5); cout << "                      ";
@@ -256,7 +265,7 @@ void play() {
 }
 
 int main() {
-    SetConsoleOutputCP(CP_UTF8); // Enable emoji display
+    SetConsoleOutputCP(CP_UTF8);
     setcursor(0, 0);
     srand((unsigned)time(0));
 
@@ -269,8 +278,9 @@ int main() {
         gotoxy(10, 9); cout << "1. Start Game 🎮";
         gotoxy(10, 10); cout << "2. Instructions 📜";
         gotoxy(10, 11); cout << "3. Quit ❌";
-        gotoxy(10, 13); cout << "Last Score: " << lastScore;
-        gotoxy(10, 15); cout << "Select option: ";
+        gotoxy(10, 13); cout << "Last Score  : " << lastScore;
+        gotoxy(10, 14); cout << "Highest Score: " << highScore; 
+        gotoxy(10, 16); cout << "Select option: ";
         char op = getche();
 
         if (op == '1') play();
