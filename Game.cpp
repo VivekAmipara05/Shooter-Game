@@ -13,12 +13,13 @@ HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
 COORD CursorPosition;
 
 int enemyX[3], enemyY[3], enemyFlag[3];
-int bullets[20][4];
+float bullets[20][4];
 int bIndex = 0;
 int birdPos = WIN_WIDTH / 2;
 int score = 0;
-int lastScore = 0;
-int highScore = 0; 
+int life = 3;
+float enemyBullets[20][2];
+int eBIndex = 0;
 
 void gotoxy(int x, int y) {
     CursorPosition.X = x;
@@ -48,9 +49,9 @@ void drawBorder() {
 
 void drawBird() {
     SetConsoleTextAttribute(console, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-    gotoxy(birdPos, 22);     cout << "  🚀  ";
-    gotoxy(birdPos, 23);     cout << "  🛸  ";
-    gotoxy(birdPos, 24);     cout << " 🌀🌀🌀 ";
+    gotoxy(birdPos, 22);     cout << "  ✈  ";
+    gotoxy(birdPos, 23);     cout << "  🦾  ";
+    gotoxy(birdPos, 24);     cout << " 💨💨💨 ";
 }
 
 void eraseBird() {
@@ -66,8 +67,8 @@ void genEnemy(int ind) {
 void drawEnemy(int ind) {
     if (enemyFlag[ind]) {
         SetConsoleTextAttribute(console, FOREGROUND_RED | FOREGROUND_INTENSITY);
-        gotoxy(enemyX[ind], enemyY[ind]);     cout << " 👾 ";
-        gotoxy(enemyX[ind], enemyY[ind] + 1); cout << "💥💥";
+        gotoxy(enemyX[ind], enemyY[ind]);     cout << " 🐉 ";
+        gotoxy(enemyX[ind], enemyY[ind] + 1); cout << "👽👽";
     }
 }
 
@@ -80,7 +81,7 @@ void eraseEnemy(int ind) {
 
 void resetEnemy(int ind) {
     eraseEnemy(ind);
-    enemyY[ind] = 1;
+    enemyY[ind] = 4;
     genEnemy(ind);
 }
 
@@ -94,35 +95,82 @@ void genBullet() {
 
 void moveBullet() {
     for (int i = 0; i < 20; i++) {
-        if (bullets[i][0] > 2) bullets[i][0]--;
-        else bullets[i][0] = 0;
+        if (bullets[i][0] > 2) bullets[i][0] -= 0.5f;
+        else bullets[i][0] = -1;
 
-        if (bullets[i][2] > 2) bullets[i][2]--;
-        else bullets[i][2] = 0;
+        if (bullets[i][2] > 2) bullets[i][2] -= 0.5f;
+        else bullets[i][2] = -1;
     }
 }
 
 void drawBullets() {
     for (int i = 0; i < 20; i++) {
-        if (bullets[i][0] > 1) {
-            gotoxy(bullets[i][1], bullets[i][0]); cout << "🔹";
-            gotoxy(bullets[i][3], bullets[i][2]); cout << "🔹";
+        if (bullets[i][0] > 1 && bullets[i][0] < SCREEN_HEIGHT) {
+            gotoxy((int)bullets[i][1], (int)bullets[i][0]); cout << "⚡";
+        }
+        if (bullets[i][2] > 1 && bullets[i][2] < SCREEN_HEIGHT) {
+            gotoxy((int)bullets[i][3], (int)bullets[i][2]); cout << "⚡";
         }
     }
 }
 
 void eraseBullets() {
     for (int i = 0; i < 20; i++) {
-        if (bullets[i][0] >= 1) {
-            gotoxy(bullets[i][1], bullets[i][0]); cout << " ";
-            gotoxy(bullets[i][3], bullets[i][2]); cout << " ";
-        }
+        if (bullets[i][0] >= 1 && bullets[i][0] < SCREEN_HEIGHT)
+            gotoxy((int)bullets[i][1], (int)bullets[i][0]), cout << " ";
+        if (bullets[i][2] >= 1 && bullets[i][2] < SCREEN_HEIGHT)
+            gotoxy((int)bullets[i][3], (int)bullets[i][2]), cout << " ";
     }
 }
 
 void eraseBullet(int i) {
-    gotoxy(bullets[i][1], bullets[i][0]); cout << " ";
-    gotoxy(bullets[i][3], bullets[i][2]); cout << " ";
+    gotoxy((int)bullets[i][1], (int)bullets[i][0]); cout << " ";
+    gotoxy((int)bullets[i][3], (int)bullets[i][2]); cout << " ";
+}
+
+void genEnemyBullet(int ex, int ey) {
+    enemyBullets[eBIndex][0] = ey + 2;
+    enemyBullets[eBIndex][1] = ex + 1;
+    eBIndex = (eBIndex + 1) % 20;
+}
+
+void moveEnemyBullets() {
+    for (int i = 0; i < 20; i++) {
+        if (enemyBullets[i][0] >= 0 && enemyBullets[i][0] < SCREEN_HEIGHT - 1)
+            enemyBullets[i][0] += 0.5f;
+        else
+            enemyBullets[i][0] = -1;
+    }
+}
+
+void drawEnemyBullets() {
+    for (int i = 0; i < 20; i++) {
+        if (enemyBullets[i][0] > 1 && enemyBullets[i][0] < SCREEN_HEIGHT) {
+            gotoxy((int)enemyBullets[i][1], (int)enemyBullets[i][0]);
+            cout << "💣";
+        }
+    }
+}
+
+void eraseEnemyBullets() {
+    for (int i = 0; i < 20; i++) {
+        if (enemyBullets[i][0] > 1 && enemyBullets[i][0] < SCREEN_HEIGHT) {
+            gotoxy((int)enemyBullets[i][1], (int)enemyBullets[i][0]);
+            cout << " ";
+        }
+    }
+}
+
+bool checkEnemyBulletHit() {
+    for (int i = 0; i < 20; i++) {
+        if (enemyBullets[i][0] >= 22 && enemyBullets[i][0] <= 24) {
+            if (enemyBullets[i][1] >= birdPos && enemyBullets[i][1] <= birdPos + 4) {
+                enemyBullets[i][0] = -1;
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 bool checkCollisionForEnemy(int i) {
@@ -145,12 +193,12 @@ bool collision() {
 int bulletHit() {
     for (int i = 0; i < 20; i++) {
         for (int j = 0; j < 4; j += 2) {
-            if (bullets[i][j] != 0) {
+            if (bullets[i][j] != -1) {
                 for (int e = 0; e < 2; e++) {
                     if (bullets[i][j] >= enemyY[e] && bullets[i][j] <= enemyY[e] + 1 &&
                         bullets[i][j + 1] >= enemyX[e] && bullets[i][j + 1] <= enemyX[e] + 2) {
                         eraseBullet(i);
-                        bullets[i][j] = 0;
+                        bullets[i][j] = bullets[i][j + 1] = -1;
                         resetEnemy(e);
                         return 1;
                     }
@@ -165,60 +213,39 @@ void gameover() {
     system("cls");
     cout << "\n\t\t💀💀💀 GAME OVER 💀💀💀\n\n";
     cout << "\t\tFinal Score: " << score << "\n";
-
-    lastScore = score;
-    if (score > highScore) {
-        highScore = score;
-        cout << "\t\t🏆 New High Score! 🏆\n";
-    }
-	Sleep(3000);
-
+    cout << "\t\tThanks for playing!\n";
     cout << "\n\t\tPress any key to return to menu...";
-	
     getch();
 }
 
 void updateScore() {
     SetConsoleTextAttribute(console, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
     gotoxy(WIN_WIDTH + 7, 5); cout << "Score: " << score << "   ";
+    gotoxy(WIN_WIDTH + 7, 6); cout << "Life: " << life << "    ";
     SetConsoleTextAttribute(console, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-}
-
-void instructions() {
-    system("cls");
-    cout << "🎮 Instructions 🎮";
-    cout << "\n--------------------";
-    cout << "\n A - Move Left";
-    cout << "\n D - Move Right";
-    cout << "\n Space - Shoot 🔫";
-    cout << "\n Avoid enemies (👾)!";
-    cout << "\n\nPress any key to go back...";
-    getch();
 }
 
 void play() {
     birdPos = WIN_WIDTH / 2 - 1;
     score = 0;
+    life = 3;
     enemyFlag[0] = enemyFlag[1] = 1;
     enemyY[0] = enemyY[1] = 4;
-    for (int i = 0; i < 20; i++)
-        bullets[i][0] = bullets[i][1] = bullets[i][2] = bullets[i][3] = 0;
+
+    for (int i = 0; i < 20; i++) {
+        bullets[i][0] = bullets[i][1] = bullets[i][2] = bullets[i][3] = -1;
+        enemyBullets[i][0] = enemyBullets[i][1] = -1;
+    }
 
     system("cls");
     drawBorder();
     genEnemy(0); genEnemy(1);
     updateScore();
 
-    gotoxy(WIN_WIDTH + 2, 2); cout << "🚀Space Shooter🚀";
-    gotoxy(WIN_WIDTH + 6, 4); cout << "--------";
-    gotoxy(WIN_WIDTH + 7, 12); cout << "Controls";
-    gotoxy(WIN_WIDTH + 7, 13); cout << "--------";
-    gotoxy(WIN_WIDTH + 5, 14); cout << "A - Left";
-    gotoxy(WIN_WIDTH + 5, 15); cout << "D - Right";
-    gotoxy(WIN_WIDTH + 5, 16); cout << "Space - Shoot";
-    gotoxy(10, 5); cout << "Press any key to start 🚀";
+    gotoxy(WIN_WIDTH + 5, 2); cout << "✈ Space Shooter ✈";
+    gotoxy(10, 5); cout << "Press any key to start! 🚀";
     getch();
-    gotoxy(10, 5); cout << "                      ";
+    gotoxy(10, 5); cout << "                        ";
 
     while (1) {
         if (kbhit()) {
@@ -229,32 +256,44 @@ void play() {
             if (ch == 'd' || ch == 'D') {
                 if (birdPos < WIN_WIDTH - 7) birdPos += 2;
             }
-            if (ch == 32) genBullet();
-            if (ch == 27) break;
+            if (ch == 27) break; // ESC to quit
+        }
+
+        genBullet();  // Auto fire
+
+        if (rand() % 20 == 0) {
+            if (enemyFlag[0]) genEnemyBullet(enemyX[0], enemyY[0]);
+            if (enemyFlag[1]) genEnemyBullet(enemyX[1], enemyY[1]);
         }
 
         drawBird();
-        drawEnemy(0);
-        drawEnemy(1);
+        drawEnemy(0); drawEnemy(1);
         drawBullets();
+        drawEnemyBullets();
 
-        if (collision()) {
-            gameover();
-            return;
+        if (collision() || checkEnemyBulletHit()) {
+            life--;
+            updateScore();
+            if (life == 0) {
+                gameover();
+                return;
+            }
         }
 
         if (bulletHit()) {
             score++;
+           // Beep(1000, 800);
             updateScore();
         }
 
-        Sleep(100);
+        Sleep(100); // Lower = faster game
 
         eraseBird();
-        eraseEnemy(0);
-        eraseEnemy(1);
+        eraseEnemy(0); eraseEnemy(1);
         eraseBullets();
+        eraseEnemyBullets();
         moveBullet();
+        moveEnemyBullets();
 
         if (enemyFlag[0]) enemyY[0]++;
         if (enemyFlag[1]) enemyY[1]++;
@@ -271,21 +310,16 @@ int main() {
 
     while (true) {
         system("cls");
-        gotoxy(10, 4); cout << "👾 Welcome back, pilot!";
         gotoxy(10, 5); cout << " ============================ ";
-        gotoxy(10, 6); cout << " |     🚀 Space Shooter 🚀    | ";
+        gotoxy(10, 6); cout << " |      ✈ Space Shooter     | ";
         gotoxy(10, 7); cout << " ============================ ";
         gotoxy(10, 9); cout << "1. Start Game 🎮";
-        gotoxy(10, 10); cout << "2. Instructions 📜";
-        gotoxy(10, 11); cout << "3. Quit ❌";
-        gotoxy(10, 13); cout << "Last Score  : " << lastScore;
-        gotoxy(10, 14); cout << "Highest Score: " << highScore; 
-        gotoxy(10, 16); cout << "Select option: ";
+        gotoxy(10, 10); cout << "2. Quit ❌";
+        gotoxy(10, 12); cout << "Select option: ";
         char op = getche();
 
         if (op == '1') play();
-        else if (op == '2') instructions();
-        else if (op == '3') break;
+        else if (op == '2') break;
     }
 
     return 0;
