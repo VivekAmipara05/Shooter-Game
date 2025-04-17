@@ -82,6 +82,29 @@ Space Shooter is a console-based game where you control a spaceship to shoot at 
 <br>eraseBullet(int i)
 <br>Erases a specific bullet by index i.
 
+<h3>💣 Enemy Bullet Functions</h3>
+<br>genEnemyBullet(int ex, int ey)
+<br>Generates a bullet below the enemy's position.
+<br>moveEnemyBullets()
+<br>Moves enemy bullets downward. If they reach the bottom, they're deactivated.
+<br>drawEnemyBullets()
+<br>Displays active enemy bullets as 💣.
+<br>eraseEnemyBullets()
+<br>Erases all enemy bullets from their current positions.
+
+<h3>⚠️ Collision Detection Functions</h3>
+<br>checkEnemyBulletHit()
+<br>Checks if an enemy bullet has hit the player. Returns true if it does.
+<br>checkCollisionForEnemy(int i)
+<br>Checks if a specific enemy i has collided with the player.
+<br>collision()
+<br>Checks if any active enemy has collided with the player. Returns true on collision.
+<br>bulletHit()
+<br>Checks if a bullet has hit an enemy. If hit:
+<br>Removes the bullet.
+<br>Resets the enemy.
+<br>Returns 1 (hit detected). Else, returns 0.
+
 <h2> ♠️ Game Over</h2>
 <br>The game ends when your spaceship collides with an enemy.<br> You will see a Game Over screen displaying your final score. <br>Press any key to return to the main menu.
 
