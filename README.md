@@ -105,6 +105,12 @@ Space Shooter is a console-based game where you control a spaceship to shoot at 
 <br>Resets the enemy.
 <br>Returns 1 (hit detected). Else, returns 0.
 
+<h3>☠️ Game Over & Score Display</h3>
+<br>gameover()
+<br>Displays a Game Over screen with final score and thanks message.
+<br>updateScore()
+<br>Updates and redraws the score and remaining lives on the side panel.
+
 <h2> ♠️ Game Over</h2>
 <br>The game ends when your spaceship collides with an enemy.<br> You will see a Game Over screen displaying your final score. <br>Press any key to return to the main menu.
 
