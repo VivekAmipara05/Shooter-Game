@@ -150,7 +150,7 @@ Space Shooter is a console-based game where you control a spaceship to shoot at 
 ## 📈Improvements to be done:-
   1. Dynamic Difficulty
   2. Graphics
-  3. Recording HighScore via file Handling
+  3. Recording HighScore via file Handling and many
      
 
 ## 👉original source:
