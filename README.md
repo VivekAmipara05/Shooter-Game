@@ -78,6 +78,11 @@ Space Shooter is a console-based game where you control a spaceship to shoot at 
 
 <br>➡️Make sure your console window is large enough to fit the game (recommendation: at least 90x26 characters).
 <br>➡️Emoji characters are supported in the console if your system supports UTF-8 encoding.
+## improvements to be done:-
+  1. Dynamic Difficulty
+  2. Graphics
+  3. Recording HighScore via file Handling
+     
 
 ## original source:
   <a href= https://github.com/AngularsCoding/Space-Shooter>Source</a><br>
