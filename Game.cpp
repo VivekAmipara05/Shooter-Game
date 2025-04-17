@@ -18,7 +18,7 @@ int bIndex = 0;
 int birdPos = WIN_WIDTH / 2;
 int score = 0;
 int lastScore = 0;
-int highScore = 0; // ✅ Added high score variable
+int highScore = 0; 
 
 void gotoxy(int x, int y) {
     CursorPosition.X = x;
