@@ -137,6 +137,8 @@ Space Shooter is a console-based game where you control a spaceship to shoot at 
    ./code.exe
    ```
 
+![Image](https://github.com/user-attachments/assets/2c599038-e0a3-41f9-98df-89d8a75c38e7)
+
 <h2> 🌼Dependencies</h2>
 
 <br>➡️ Windows: This game uses Windows-specific libraries, such as <conio.h> and <windows.h>, which are available on Windows systems.
