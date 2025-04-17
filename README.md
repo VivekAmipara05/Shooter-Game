@@ -47,49 +47,49 @@ Space Shooter is a console-based game where you control a spaceship to shoot at 
 <h2>Function overview</h2>
 
 <h3>📌 Console Handling Functions</h3>
-<br> ✨gotoxy(int x, int y)
+<br> ✨1.gotoxy(int x, int y)
 <br>Moves the console cursor to the specified (x, y) position for drawing.
-<br>✨setcursor(bool visible, DWORD size)
+<br>✨2.setcursor(bool visible, DWORD size)
 <br>Sets the visibility and size of the console cursor.
 
 <h3>🎮 Game UI and Player Functions</h3>
-<br>✨drawBorder()
+<br>✨1.drawBorder()
 <br>Draws the game boundary using special characters (±). Also marks the score and life area.
-<br>✨drawBird()
+<br>✨2.drawBird()
 <br>Displays the player character (the airplane) using emojis at its current horizontal position.
-<br>✨eraseBird()
+<br>✨3.eraseBird()
 <br>Erases the player airplane from the screen before redrawing it in a new position.
 
 <h3>👾 Enemy Functions</h3>
-<br>✨genEnemy(int ind)
+<br>✨1.genEnemy(int ind)
 <br>Generates a new horizontal position for an enemy. ind is the enemy index (0 or 1).
-<br>✨drawEnemy(int ind)
+<br>✨2.drawEnemy(int ind)
 <br>✨Draws an enemy (👽) at its (x, y) position.
-<br>✨eraseEnemy(int ind)
+<br>✨3.eraseEnemy(int ind)
 <br>Erases the enemy graphics from the screen.
-<br>✨resetEnemy(int ind)
+<br>✨4.resetEnemy(int ind)
 <br>Resets an enemy to the top of the screen with a new horizontal position.
 
 <h3>🔫 Player Bullet Functions</h3>
-<br>✨genBullet()
+<br>✨1.genBullet()
 <br>Generates a pair of bullets (left and right) from the airplane's wings.
-<br>✨moveBullet()
+<br>✨2.moveBullet()
 <br>Moves the bullets upward (toward the enemies). If they reach the top, they're deactivated.
-<br>✨drawBullets()
+<br>✨3.drawBullets()
 <br>Displays all active bullets on the screen as ⚡.
-<br>✨eraseBullets()
+<br>✨4.eraseBullets()
 <br>Erases all bullets from their current positions before moving them.
-<br>✨eraseBullet(int i)
+<br>✨5.eraseBullet(int i)
 <br>Erases a specific bullet by index i.
 
 <h3>💣 Enemy Bullet Functions</h3>
-<br>✨genEnemyBullet(int ex, int ey)
+<br>✨1.genEnemyBullet(int ex, int ey)
 <br>Generates a bullet below the enemy's position.
-<br>✨moveEnemyBullets()
+<br>✨2.moveEnemyBullets()
 <br>Moves enemy bullets downward. If they reach the bottom, they're deactivated.
-<br>✨drawEnemyBullets()
+<br>✨3.drawEnemyBullets()
 <br>Displays active enemy bullets as 💣.
-<br>✨eraseEnemyBullets()
+<br>✨4.eraseEnemyBullets()
 <br>Erases all enemy bullets from their current positions.
 
 <h3>⚠️ Collision Detection Functions</h3>
